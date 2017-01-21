@@ -14,7 +14,7 @@ html, body {
   z-index: 99;
 }
 
-.topnav a {
+.topnav .logo {
   position: fixed;
   font-family: Raleway;
   font-weight: bold;
@@ -28,6 +28,18 @@ html, body {
 }
 
 .topnav a:hover {
+  color: #3f3f3f;
+}
+
+.navicon {
+  margin-left: 0;
+  position: fixed;
+  top: 12px;
+  color: #3f3f3f;
+  left: 2%;
+}
+
+.navicon a {
   color: #3f3f3f;
 }
 

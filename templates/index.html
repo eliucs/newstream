@@ -20,17 +20,24 @@
     <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Raleway:800' rel='stylesheet' type='text/css'>
     <link href="http://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
     <title>Newstream</title>
   </head>
 
   <body class="home">
     <nav class="topnav">
+      <div class="navicon"><a href="#"><i class="fa fa-bars fa-lg"></i></a></div>
+
       <a href="#" class="logo">Newstream</a>
 
       <form class="search" id="search" action="/search" method="post">
         <input class="search-bar" type="text" name="search" placeholder="Search here">
       </form>
+    </nav>
+
+    <nav class="sidenav">
+
     </nav>
 
     <div class="home-title">{{ text }}</div>
