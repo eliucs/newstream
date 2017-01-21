@@ -1,5 +1,7 @@
-#
-#
-#   twitter.py
-#
-#   Aggregates Tweets based off a search query
+'''
+
+    twitter.py
+
+    Aggregates Tweets from a search query.
+
+'''
