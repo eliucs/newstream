@@ -31,6 +31,19 @@ html, body {
   color: #3f3f3f;
 }
 
+.home-title {
+  position: fixed;
+  font-family: Raleway;
+  font-weight: bold;
+  font-style: normal;
+	font-variant: normal;
+  color: #d3d3d3;
+  font-size: 100px;
+  width: 100%;
+  margin-top: 15%;
+  text-align: center;
+}
+
 .search {
   position: fixed;
   width: 100%;
@@ -109,8 +122,8 @@ html, body {
 
 .sentiment-stat {
   display: inline-block;
-  padding-left: 8%;
-  text-align: center;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .sentiment-container {
@@ -119,6 +132,7 @@ html, body {
   margin-right: 5%;
   padding-bottom: 40px;
   color: #3f3f3f;
+  text-align: center;
 
   -webkit-animation: fadein 2s forwards; /* Safari, Chrome and Opera > 12.1 */
      -moz-animation: fadein 2s forwards; /* Firefox < 16 */
@@ -168,7 +182,7 @@ html, body {
 }
 
 .sentiment-graph {
-  height: 400px;
+  height: 450px;
   padding-bottom: 40px;
 }
 
@@ -194,6 +208,7 @@ html, body {
 }
 
 .image {
+  background-size: cover;
   height: 200px;
   width: 300px;
 }

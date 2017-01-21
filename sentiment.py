@@ -81,3 +81,28 @@ def getSentimentText(score):
         return "Extremely Positive"
     else:
         return "Overwhelmingly Positive"
+
+
+#   getSentimentColor(score) consumes a sentiment score as a float value
+#   and returns its associated color
+def getSentimentColor(score):
+    if score <= 0.1:
+        return "#e50000"
+    elif score <= 0.2:
+        return "#cc0000"
+    elif score <= 0.3:
+        return "#b20000"
+    elif score <= 0.4:
+        return "#990000"
+    elif score <= 0.5:
+        return "#7f0000"
+    elif score <= 0.6:
+        return "#004000"
+    elif score <= 0.7:
+        return "#004c00"
+    elif score <= 0.8:
+        return "#005900"
+    elif score <= 0.9:
+        return "#006600"
+    else:
+        return "#007300"

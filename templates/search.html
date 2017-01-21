@@ -26,13 +26,44 @@
 
   <body class="home">
     <nav class="topnav">
-      <a href="#" class="logo">Newstream</a>
+      <a href="/" class="logo">Newstream</a>
 
       <form class="search" id="search" action="/search" method="post">
         <input class="search-bar" type="text" name="search" placeholder="Search here">
       </form>
     </nav>
 
-    <div class="home-title">{{ text }}</div>
+    <div class="top-space"></div>
+
+    <div class="head">{{ queryHeader }}</div>
+
+    <div class="sentiment-container">
+      <div class="sentiment-stat">
+        <div class="sentiment-head">Sentiment Score</div>
+        <div class="sentiment-text" style="color: {{ color }};">{{ sentimentScore }}</div>
+      </div>
+
+      <div class="sentiment-stat">
+        <div class="sentiment-head">Consensus</div>
+        <div class="sentiment-text" style="color: {{ color }};">{{ sentimentValue }}</div>
+      </div>
+
+      <div class="sentiment-stat">
+        <div class="sentiment-head">Sentiment Spread</div>
+        <div class="sentiment-text" style="color: {{ color }};">{{ spread }}</div>
+      </div>
+    </div>
+
+    <div class="sentiment-graph-container">
+      <div class="sentiment-graph-head">Sentiment Change Over Last 5 Days</div>
+      <div class="sentiment-graph">
+        <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="https://plot.ly/~ericliu/0.embed" height="400" width="60%"></iframe>
+      </div>
+    </div>
+
+    <div class="head">News Articles</div>
+
+    {{ result|safe }}    
+
   </body>
 </html>
