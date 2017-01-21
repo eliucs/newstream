@@ -26,34 +26,53 @@
     <title>Newstream</title>
   </head>
 
-  <body class="dashboard">
-    <nav class="topnav-dashboard">
-      <a href="index.html" class="logo-dashboard">Newstream</a>
-      <a href="dashboard.html" class="dashboard-bar">Dashboard</a>
+  <body class="home">
+    <nav class="topnav">
+      <a href="#" class="logo">Newstream</a>
+
+      <form class="search" id="search">
+        <input class="search-bar" type="text" name="search" placeholder="Search here">
+      </form>
     </nav>
 
-    <nav class="rightnav">
-      <div class="nav-container">
-        <div class="nav-title-label">
-          SEARCH
-        </div>
+    <div class="top-space"></div>
 
-        <form class="search" id="search">
-          <input class="search-bar" type="text" name="search">
-        </form>
+    <div class="head">donald trump</div>
 
-        <div class="nav-title-label">
-          PINNED
-        </div>
+    <div class="sentiment-container">
+      <div class="sentiment-stat">
+        <div class="sentiment-head">Sentiment Score</div>
+        <div class="sentiment-text" style="color: #9932cc;">0.628945</div>
       </div>
 
-    </nav>
+      <div class="sentiment-stat">
+        <div class="sentiment-head">Sentiment Value</div>
+        <div class="sentiment-text" style="color: #9932cc;">Generally Positive</div>
+      </div>
 
-    <div class="footer">
-      <div class="footer-content">
-        <span>&copy; 2017. All Rights Reserved.</span>
-        <span><a href="http://ericliu.ca">Made by Eric Liu with <i class="em em-heart"></i></a></span>
+      <div class="sentiment-stat">
+        <div class="sentiment-head">Sentiment Spread</div>
+        <div class="sentiment-text" style="color: #9932cc;">0.184737</div>
       </div>
     </div>
+
+    <div class="sentiment-graph-container">
+      <div class="sentiment-graph-head">Sentiment Change Over Last 5 Days</div>
+      <div class="sentiment-graph"></div>
+    </div>
+
+    <div class="head">News Articles</div>
+
+    <div class="article-container">
+      <div class="image"><img src="test.jpg" alt="title of article"></div>
+      
+    </div>
+
+
+
+
+
+
+
   </body>
 </html>
