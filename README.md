@@ -4,7 +4,7 @@ PennApps XV Project. Newstream aggregates news from a multitude of sources from 
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
@@ -14,17 +14,8 @@ You will need Python 3.5 and to install Flask, Indico, Plotly and Python-Twitter
 
 ```
 $ pip3.5 install flask
-```
-
-```
 $ pip3.5 install indicoio
-```
-
-```
 $ pip3.5 install plotly
-```
-
-```
 $ pip3.5 install python-twitter
 ```
 
@@ -37,7 +28,7 @@ $ export FLASK_APP=main.py
 $ flask run
 ```
 
-The server will start at 127.0.0.1:5000/.
+The server will start at 127.0.0.1:5000/
 
 ## Built With
 
