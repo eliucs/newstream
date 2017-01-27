@@ -66,7 +66,4 @@ class Graph:
         url = py.plot(fig, filename='graph', auto_open=False)
         html = tls.get_embed(url, width='100%', height=400)
 
-        print(url)
-        print(html)
-        
         return html

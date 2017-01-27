@@ -70,7 +70,6 @@ def send():
             tweets = TwitterProcessing(query)
             sentimentsLastFiveDays = tweets.getTweetSentiment()
             sentimentsLastFiveDays.append(float('{0:.6f}'.format(averageSentiment)))
-            print(sentimentsLastFiveDays)
 
             graph = Graph(sentimentsLastFiveDays)
 
@@ -93,6 +92,14 @@ def send():
                                    color=color,
                                    result=result)
         else:
+            tweets = TwitterProcessing(query)
+            sentimentsLastFiveDays = tweets.getTweetSentiment()
+            sentimentsLastFiveDays.append('{0:.6f}'.format(cache[query]['sentimentScore']))
+
+            graph = Graph(sentimentsLastFiveDays)
+
+            graphLink = graph.getGraph()
+
             return render_template('search.html',
                                    queryHeader=cache[query]['queryHeader'],
                                    sentimentScore='{0:.6f}'.format(cache[query]['sentimentScore']),
