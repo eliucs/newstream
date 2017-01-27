@@ -3,6 +3,7 @@ from urllib.request import urlopen
 
 
 class News:
+
     def __init__(self, query):
         self._query = query
 
@@ -22,8 +23,10 @@ class News:
             if response != []:
                 self._filteredArticles.extend(response)
 
+
     def getArticles(self):
         return self._filteredArticles
+
 
     def getDescriptions(self):
         res = []
@@ -32,6 +35,7 @@ class News:
                 res.append(article['description'])
 
         return res
+
 
     def searchArticles(self, articles):
         filteredArticles = []
@@ -42,8 +46,6 @@ class News:
                         in article['title'].lower():
                     filteredArticles.append(article)
             except AttributeError:
-                # DO nothing lol
-                # print("Yeah boi")
                 continue
 
         return filteredArticles

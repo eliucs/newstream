@@ -21,6 +21,7 @@ class Graph:
     def __init__(self, sentiment):
         self._sentiment = sentiment
 
+
     def _getDates(self):
         dates = list()
 
@@ -32,6 +33,7 @@ class Graph:
         dates.reverse()
 
         return dates
+
 
     def getGraph(self):
         dates = self._getDates()
