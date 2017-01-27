@@ -3,6 +3,7 @@ from urllib.request import urlopen
 
 
 class News:
+
     def __init__(self, query):
         self._query = query
 

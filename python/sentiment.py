@@ -22,12 +22,14 @@ indico.config.api_key = '5318bb1846008c9c7f9bbd51256861fb'
 def getSentiment(str):
     return indico.sentiment(str)
 
+
 '''
     printSentiment(str) consumes a string and prints the result
     of getSentiment(str) to the console
 '''
 def printSentiment(str):
     print(getSentiment(str))
+
 
 '''
     getBatchSentiment(lst) consumes a list of strings and uses
@@ -36,6 +38,7 @@ def printSentiment(str):
 '''
 def getBatchSentiment(lst):
     return indico.sentiment(lst)
+
 
 '''
     printBatchSentiment(lst) consumes a list of strings and prints the
@@ -58,12 +61,14 @@ def getAverageSentiment(lst):
 
     return '{0:.6f}'.format(sum / len(sentimentList))
 
+
 '''
     printAverageSentiment(lst) consumes list of strings and prints the
     result of getAverageSentiment(lst) to the console
 '''
 def printAverageSentiment(lst):
     print(getAverageSentiment(lst))
+
 
 '''
     getSentimentText(score) consumes a sentiment score as a float value

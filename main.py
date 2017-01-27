@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request
+from graph import Graph
 from news import News
 import sentiment
+from twitterProcessing import TwitterProcessing
 
 app = Flask(__name__)
 
@@ -21,7 +23,6 @@ def send():
 
             news = News(query)
             articles = news.getArticles()
-            descriptions = news.getDescriptions()
 
             sentiments = list()
             result = ''
@@ -64,6 +65,16 @@ def send():
             averageSentiment = sumSentiments / len(sentiments)
             sentimentValue = sentiment.getSentimentText(averageSentiment)
             color = sentiment.getSentimentColor(averageSentiment)
+
+
+            tweets = TwitterProcessing(query)
+            sentimentsLastFiveDays = tweets.getTweetSentiment()
+            sentimentsLastFiveDays.append(float('{0:.6f}'.format(averageSentiment)))
+            print(sentimentsLastFiveDays)
+
+            graph = Graph(sentimentsLastFiveDays)
+
+            graphLink = graph.getGraph()
 
             newCache = {'queryHeader': query,
                         'sentimentScore': averageSentiment,

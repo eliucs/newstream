@@ -1,3 +1,12 @@
+'''
+
+    news.py
+
+    Retrieves news articles using the News API.
+
+'''
+
+
 import json
 from urllib.request import urlopen
 
@@ -23,20 +32,31 @@ class News:
             if response != []:
                 self._filteredArticles.extend(response)
 
-
+    '''
+        getArticle() returns a list of articles (filtered if their length
+        is 0)
+    '''
     def getArticles(self):
         return self._filteredArticles
 
 
+    '''
+        getDescriptions() returns only the descriptions from the
+        articles
+    '''
     def getDescriptions(self):
-        res = []
+        result = []
         for article in self._filteredArticles:
             if len(article['description']) > 0:
-                res.append(article['description'])
+                result.append(article['description'])
 
-        return res
+        return result
 
 
+    '''
+        searchArticles(articles) returns the filtered articles by whether the
+        search query exists in the title or description of the article
+    '''
     def searchArticles(self, articles):
         filteredArticles = []
 

@@ -49,34 +49,23 @@ class TwitterProcessing:
 
 
     '''
-        getTweetSentimentScore() retrieves Tweets based on search query and date, and returns the sentiment
-        of those tweets
-    '''
-    def getTweetSentimentScore(self, date):
-        results = api.GetSearch(raw_query='q=' + self._query + '%20&result_type=recent&until=' + date + '&count=100')
-
-        tweets = list()
-
-        for result in results:
-            tweet = result.AsDict()
-            tweets.append(tweet['text'])
-
-        sentimentScore = sentiment.getAverageSentiment(tweets)
-
-        return sentimentScore
-
-
-    '''
         getTweetSentiment() returns a list of the sentiment score of the last four days
     '''
     def getTweetSentiment(self):
-        sentiments = list()
+        sentiments = []
         dates = self._getDates()
 
         for date in dates:
-            print(date)
-            sentiments.append(self.getTweetSentimentScore(self._query, date))
+            results = api.GetSearch(raw_query='q=' + self._query + '%20&result_type=recent&until=' + date + '&count=100')
 
-        print(sentiments)
+            tweets = []
+
+            for result in results:
+                tweet = result.AsDict()
+                tweets.append(tweet['text'])
+
+            sentimentScore = float(sentiment.getAverageSentiment(tweets))
+
+            sentiments.append(sentimentScore)
 
         return sentiments
