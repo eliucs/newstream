@@ -1,12 +1,42 @@
+'''
+
+    Newstream
+
+    PennApps XV: Aggregating news and Tweets and applying
+    sentiment analysis on various topics.
+
+    Authors: Eric Liu (https://github.com/eliucs)
+             Jason Pham (https://github.com/suchAHassle)
+
+'''
+
+
 from flask import Flask, render_template, request
+import pyrebase
 from graph import Graph
 from news import News
 import sentiment
 from twitterProcessing import TwitterProcessing
 
+
 app = Flask(__name__)
 
 cache = dict()
+
+# Initialize Firebase for caching search results
+config = {
+  "apiKey": "AIzaSyBvz2GVPQJBnQjblZneyffJeLIAusKkUOE",
+  "authDomain": "newstream-166cf.firebaseapp.com",
+  "databaseURL": "https://newstream-166cf.firebaseio.com",
+  "storageBucket": "newstream-166cf.appspot.com",
+  "serviceAccount": "serviceAccountKey.json"
+}
+
+firebase = pyrebase.initialize_app(config)
+
+# Get a reference to the database service
+db = firebase.database()
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -19,7 +49,9 @@ def send():
 
         query = request.form['search']
 
-        if query not in cache:
+        cache = db.child('data').get()
+
+        if query not in cache.val():
 
             news = News(query)
             articles = news.getArticles()
@@ -72,8 +104,7 @@ def send():
             sentimentsLastFiveDays.append(float('{0:.6f}'.format(averageSentiment)))
 
             graph = Graph(sentimentsLastFiveDays)
-
-            graphLink = graph.getGraph()
+            graph.getGraph()
 
             newCache = {'queryHeader': query,
                         'sentimentScore': averageSentiment,
@@ -82,7 +113,7 @@ def send():
                         'color': color,
                         'result': result}
 
-            cache[query] = newCache
+            db.child('data').update({query: newCache})
 
             return render_template('search.html',
                                    queryHeader=query,
@@ -92,21 +123,23 @@ def send():
                                    color=color,
                                    result=result)
         else:
+            oldCache = cache.val()
+            info = oldCache[query]
+
             tweets = TwitterProcessing(query)
             sentimentsLastFiveDays = tweets.getTweetSentiment()
-            sentimentsLastFiveDays.append('{0:.6f}'.format(cache[query]['sentimentScore']))
+            sentimentsLastFiveDays.append('{0:.6f}'.format(info['sentimentScore']))
 
             graph = Graph(sentimentsLastFiveDays)
-
-            graphLink = graph.getGraph()
+            graph.getGraph()
 
             return render_template('search.html',
-                                   queryHeader=cache[query]['queryHeader'],
-                                   sentimentScore='{0:.6f}'.format(cache[query]['sentimentScore']),
-                                   sentimentValue=cache[query]['sentimentValue'],
-                                   spread='{0:.6f}'.format(cache[query]['spread']),
-                                   color=cache[query]['color'],
-                                   result=cache[query]['result'])
+                                   queryHeader=info['queryHeader'],
+                                   sentimentScore='{0:.6f}'.format(info['sentimentScore']),
+                                   sentimentValue=info['sentimentValue'],
+                                   spread='{0:.6f}'.format(info['spread']),
+                                   color=info['color'],
+                                   result=info['result'])
 
     else:
         return render_template('index.html', text='Try searching for something.')

@@ -12,7 +12,7 @@
 import indicoio as indico
 
 
-indico.config.api_key = '5318bb1846008c9c7f9bbd51256861fb'
+indico.config.api_key = '94fe316ecb3140771fd156d0017eb647'
 
 
 '''
