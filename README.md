@@ -42,4 +42,4 @@ The server will start at 127.0.0.1:5000/
 ## Authors
 
 * **Eric Liu** - *Frontend and backend* - [eliucs](https://github.com/eliucs)
-* **Jason Pham** - *Backend* - [suchAHassle](https://github.com/suchAHassle)
+* **Jason Pham** - *Backend* - [suchaHassle](https://github.com/suchaHassle)
